@@ -1,0 +1,38 @@
+{
+	"name": "GiphyStock",
+	"description": "Stock your WordPress blog media with animated GIF from Giphy",
+	"version": "0.0.1",
+	"homepage": "https://github.com/gedex/GiphyStock",
+	"author": {
+		"name": "Akeda Bagus",
+		"url": "http://gedex.web.id"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/gedex/GiphyStock.git"
+	},
+
+	"bugs": {
+		"url": "https://github.com/gedex/GiphyStock/issues"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/gedex/GiphyStock/raw/master/LICENSE"
+		}
+	],
+
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"bbb": "~0.2.0",
+		"grunt-contrib-jshint": "~0.8.0",
+		"grunt-contrib-cssmin": "~0.7.0",
+		"grunt-contrib-copy": "~0.5.0",
+		"grunt-contrib-clean": "~0.5.0",
+		"grunt-contrib-compress": "~0.6.0",
+		"grunt-processhtml": "~0.3.0",
+		"grunt-filerev": "~0.2.1",
+		"grunt-usemin": "~2.2.0",
+		"grunt-gh-pages": "~0.9.1"
+	}
+}

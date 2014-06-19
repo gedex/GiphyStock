@@ -1,0 +1,23 @@
+<div class="col-md-12">
+	<form class="form-search" method="get" id="s">
+		<div class="input-group">
+			<input type="search" class="form-control" id="search" placeholder="Search gif..." value="<%- keyword %>" autofocus>
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</span>
+		</div>
+
+		<p id="search-info"></p>
+	</form>
+
+	<div id="search-results" class="center-block masonry js-masonry" data-masonry-options='{"columnWidth": 175, "itemSelector": ".gif"}'>
+	</div>
+
+	<div class="center-block loader search-loading" <% if (_.isEmpty(keyword)) { %>style="display: none;"<% } %>>
+		<img src="img/loading.gif" alt="Loading...">
+	</div>
+
+	<div class="center-block" id="load-more-container"></div>
+</div>

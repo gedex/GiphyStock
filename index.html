@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GiphyStock - Stock your WordPress blog media with animated GIF from Giphy</title>
+
+	<!-- build:css css/style.min.css -->
+	<link href="css/genericons.css" rel="stylesheet">
+	<link href="css/font.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<!-- /build -->
+</head>
+<body>
+
+<header class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><span class="genericon genericon-picture"></span> GiphyStock</a>
+		</div>
+		<!-- / navbar-header -->
+
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right" id="user-info">
+			</ul>
+		</div><!-- /.navbar-collapse -->
+
+	</div><!-- /.container -->
+</header><!- /.navbar -->
+
+<div class="content">
+	<div class="container" id="main">
+		<div class="center-block loader">
+			<img src="img/loading.gif" alt="Loading...">
+		</div>
+	</div><!--/.container-->
+</div><!--/.content-->
+
+<footer id="footer">
+	<div class="container">
+		<p class="primary">Hand-crafted with <span class="genericon genericon-heart"></span> by <a href="http://gedex.web.id">Akeda Bagus</a></p>
+		<p class="secondary">Source available on <a href="https://github.com/gedex/GiphyStock" target="_blank"><span class="genericon genericon-github"></span></a></p>
+	</div>
+</footer>
+
+<!-- build:[src] source.min.js -->
+<script data-main="js/main" src="js/libs/requirejs/require.js"></script>
+<!-- /build -->
+
+</body>
+</html>

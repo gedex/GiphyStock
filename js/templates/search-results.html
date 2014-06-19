@@ -1,0 +1,5 @@
+<% _.each(gifs, function(gif) { %>
+	<a href="#" class="gif-link">
+		<img src="<%- gif.images.fixed_width_still.url %>" class="gif" width="165" height="<%- gif.images.fixed_width_still.height %>" data-still="<%- gif.images.fixed_width_still.url %>" data-anim="<%- gif.images.fixed_width.url %>">
+	</a>
+<% }); %>
