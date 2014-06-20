@@ -64,7 +64,6 @@ define(function(require, exports, module) {
 					} )
 				)
 			);
-			console.log(resp);
 
 			localStorage.setItem("access_token", decodeURIComponent( resp.access_token ));
 			localStorage.setItem("site_id", resp.site_id);
