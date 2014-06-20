@@ -26,8 +26,9 @@ $ grunt gh-pages
 
 ## Credits
 
-* [Sulfur](https://github.com/Automattic/sulfur)
-* [Giphy API](https://github.com/Giphy/GiphyAPI)
+* [WordPress.com API](https://developer.wordpress.com/docs/api/) for allowing this app to upload media.
+* [Sulfur](https://github.com/Automattic/sulfur) for inspiring this app.
+* [Giphy API](https://github.com/Giphy/GiphyAPI) for providing animated GIF API.
 
 ## License
 
