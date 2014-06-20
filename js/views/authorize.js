@@ -11,7 +11,10 @@ define(function(require, exports, module) {
 		tpl: _.template(authorizeTemplate),
 
 		render: function() {
-			this.$el.html(this.tpl({app: App}));
+			this.$el.html(this.tpl({
+				redirect_uri: App.WPCOM.redirectURL,
+				client_id: App.WPCOM.clientID
+			}));
 
 			return this;
 		}

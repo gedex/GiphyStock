@@ -15,16 +15,20 @@ define(function(require, exports, module) {
 
 		// Based on Sulfur
 		auth: {
-			accessToken: localStorage.getItem("access_token"),
-			siteID: localStorage.getItem("site_id")
+			accessToken: function() {
+				return localStorage.getItem("access_token");
+			},
+			siteID: function() {
+				return localStorage.getItem("site_id");
+			}
 		},
 
 		setBearer: function(xhr) {
-			xhr.setRequestHeader("Authorization", "BEARER " + App.WPCOM.auth.accessToken);
+			xhr.setRequestHeader("Authorization", "BEARER " + App.WPCOM.auth.accessToken());
 		},
 
 		mediaBaseURL: function() {
-			return "https://public-api.wordpress.com/rest/v1/sites/" + App.WPCOM.auth.siteID + "/media";
+			return "https://public-api.wordpress.com/rest/v1/sites/" + App.WPCOM.auth.siteID() + "/media";
 		}
 	};
 

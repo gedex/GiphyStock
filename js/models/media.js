@@ -5,10 +5,12 @@ define(function(require, exports, module) {
 	var App = require("app");
 
 	var MediaModel = Backbone.Model.extend({
-		urlRoot: App.WPCOM.mediaBaseURL(),
+		urlRoot: function() {
+			return App.WPCOM.mediaBaseURL();
+		},
 
 		add: function(url) {
-			this.url = this.urlRoot + "/new";
+			this.url = this.urlRoot() + "/new";
 
 			this.save(
 				{

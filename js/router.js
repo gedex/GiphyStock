@@ -45,7 +45,6 @@ define(function(require, exports, module) {
 		},
 
 		logout: function() {
-			App.WPCOM.auth = {};
 			localStorage.removeItem("access_token");
 			localStorage.removeItem("site_id");
 
@@ -65,12 +64,10 @@ define(function(require, exports, module) {
 					} )
 				)
 			);
+			console.log(resp);
 
-			App.WPCOM.auth.accessToken = decodeURIComponent( resp.access_token );
-			App.WPCOM.auth.siteID = resp.site_id;
-
-			localStorage.setItem("access_token", App.WPCOM.auth.accessToken);
-			localStorage.setItem("site_id", App.WPCOM.auth.siteID);
+			localStorage.setItem("access_token", decodeURIComponent( resp.access_token ));
+			localStorage.setItem("site_id", resp.site_id);
 
 			this.maybeRenderUserInfo();
 
@@ -128,7 +125,7 @@ define(function(require, exports, module) {
 		},
 
 		isAuthorized: function() {
-			return ( App.WPCOM.auth.accessToken && App.WPCOM.auth.siteID );
+			return ( App.WPCOM.auth.accessToken() && App.WPCOM.auth.siteID() );
 		},
 
 		reset: function() {
