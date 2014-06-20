@@ -26,7 +26,6 @@
     "almond": "~0.2.9",
     "bootstrap": "~3.1.1",
     "backbone": "~1.1.2",
-    "firebase": "~1.0.17",
     "requirejs": "~2.1.14",
     "underscore": "~1.6.0",
     "jquery": "~2.1.1",

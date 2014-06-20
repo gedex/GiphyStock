@@ -11,7 +11,6 @@ define(function(require, exports, module) {
 
 	var SearchView = require("views/search");
 	var AuthorizeView = require("views/authorize");
-	var UserInfoView = require("views/user-info");
 
 	var userInfoTemplate = require("text!templates/user-info.html");
 

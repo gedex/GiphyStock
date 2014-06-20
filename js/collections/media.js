@@ -10,11 +10,7 @@ define(function(require, exports, module) {
 		},
 
 		url: function() {
-			return this.getBaseUrl() + "?number=" + this.limit;
-		},
-
-		getBaseUrl: function() {
-			return "https://public-api.wordpress.com/rest/v1/sites/" + App.WPCOM.siteID + "/media";
+			return App.WPCOM.mediaBaseURL() + "?number=" + this.limit;
 		},
 
 		parse: function(resp) {

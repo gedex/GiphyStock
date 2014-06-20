@@ -7,7 +7,6 @@ require.config({
 		"text":         "libs/requirejs-text/text",
 		"underscore":   "libs/underscore/underscore",
 		"bootstrap":    "libs/bootstrap/dist/js/bootstrap.min",
-		"firebase":     "libs/firebase/firebase",
 		"masonry":      "libs/masonry/dist/masonry.pkgd.min"
 	},
 
@@ -21,9 +20,6 @@ require.config({
 		},
 		"bootstrap": {
 			deps: ["jquery"]
-		},
-		"firebase": {
-			exports: "Firebase"
 		}
 	}
 });

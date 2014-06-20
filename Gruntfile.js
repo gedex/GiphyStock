@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 		copy: {
 			relase: {
 				files: [
-					{ src: ["css/font/*"], dest: "dist/" },
+					{ src: ["css/fonts/*"], dest: "dist/" },
 					{ src: ["img/**"], dest: "dist/" }
 				]
 			}

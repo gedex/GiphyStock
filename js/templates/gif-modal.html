@@ -1,0 +1,12 @@
+<div class="modal-header" id="gif-modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h4 class="modal-title">Gif <%- gif.id %></h4>
+</div>
+<div class="modal-body" id="gif-modal-body">
+	<div id="gif-upload-notification"></div>
+	<img src="<%- gif.images.original.url %>" class="img-responsive">
+</div>
+<div class="modal-footer" id="gif-modal-footer">
+	<button type="button" class="btn btn-primary btn-lg" id="upload-gif" data-url="<%- gif.images.original.url %>" data-title="<%- gif.id %>">Upload This Gif</button>
+	<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+</div>

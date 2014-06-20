@@ -21,16 +21,16 @@ define(function(require, exports, module) {
 
 		setBearer: function(xhr) {
 			xhr.setRequestHeader("Authorization", "BEARER " + App.WPCOM.auth.accessToken);
+		},
+
+		mediaBaseURL: function() {
+			return "https://public-api.wordpress.com/rest/v1/sites/" + App.WPCOM.auth.siteID + "/media";
 		}
 	};
 
 	App.Giphy = {
 		baseURL: "http://api.giphy.com/v1/gifs",
-		apiKey: "dc6zaTOxFJmzC"
-	};
-
-	App.Firebase = {
-		URL: "https://giphystock.firebaseio.com/"
+		apiKey: "dc6zaTOxFJmzC",
 	};
 
 });

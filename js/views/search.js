@@ -5,14 +5,19 @@ define(function(require, exports, module) {
 	var Backbone = require("backbone");
 	var Masonry = require("masonry");
 
+	var MediaModel = require("models/media");
+
 	var searchTemplate = require("text!templates/search.html");
 	var searchResultsTemplate = require("text!templates/search-results.html");
 	var searchInfoTemplate = require("text!templates/search-info.html");
 	var loadMoreButton = '<button type="button" class="btn btn-primary btn-lg btn-block" id="next-result">Load More</button>';
+	var modalContentTemplate = require("text!templates/gif-modal.html");
+	var modalNotifcation = require("text!templates/gif-modal-notification.html");
 
 	var SearchView = Backbone.View.extend({
-		keyword: "",
-		tpl: _.template(searchTemplate),
+		keyword:      "",
+		tpl:          _.template(searchTemplate),
+		modalContent: _.template(modalContentTemplate),
 
 		className: "row",
 
@@ -20,7 +25,9 @@ define(function(require, exports, module) {
 			"submit #s":           "searchOnSubmit",
 			"click #next-result":  "nextResult",
 			"mouseover .gif":      "animate",
-			"mouseout .gif":       "stillImage"
+			"mouseout .gif":       "stillImage",
+			"click .gif":          "viewSingle",
+			"click #upload-gif":   "uploadGif"
 		},
 
 		initialize: function(options) {
@@ -37,7 +44,7 @@ define(function(require, exports, module) {
 			e.stopPropagation();
 
 			if (!_.isEmpty(keyword)) {
-				this.router.navigate("search/" + keyword + "/0", {trigger: true});
+				this.router.navigate("search/" + keyword, {trigger: true});
 			}
 		},
 
@@ -145,6 +152,46 @@ define(function(require, exports, module) {
 			el.off("error");
 
 			el.attr("src", still);
+		},
+
+		viewSingle: function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+
+			var link = $(e.target).parent();
+			var id = link.data("id");
+			var model = this.collection.get(id);
+
+			var modalContent = this.modalContent({
+				gif: model.toJSON()
+			});
+
+			this.$el.find("#gif-modal-content").html(modalContent);
+			this.$el.find("#gif-modal").modal("show");
+		},
+
+		uploadGif: function(e) {
+			var btn = $(e.target);
+			var label = btn.text();
+			var url = btn.data("url");
+			var title = btn.data("title");
+			var model = new MediaModel();
+
+			btn.text("Uploading...");
+
+			model.once("sync", function() {
+
+				this.$el.find("#gif-upload-notification").html(
+					_.template(modalNotifcation)({
+						type: "success",
+						content: "Gif is successfully uploaded"
+					})
+				);
+
+				btn.text(label);
+			}, this);
+
+			model.add(url);
 		},
 
 		removeLoader: function(e) {

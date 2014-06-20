@@ -8,13 +8,22 @@ body {
   }
 }
 
-.btn-block {
+.btn-block,
+.modal-footer .btn {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border: 1px solid rgba(0,0,0,0.3);
 	border-bottom-width: 3px;
 	padding: 10px 16px;
+}
+
+.modal-header {
+	background-color: #1e8cbe;
+	color: #fff;
+}
+.modal-footer {
+	background-color: #eee;
 }
 
 .container .jumbotron {
