@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 
 	App.WPCOM = {
 		clientID: "35179",
-		redirectURL: window.location.origin,
+		redirectURL: window.location.origin + window.location.pathname,
 
 		// Based on Sulfur
 		auth: {
