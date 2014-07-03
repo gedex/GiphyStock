@@ -5,6 +5,9 @@ define(function(require, exports, module) {
 	var Backbone = require("backbone");
 	var Masonry = require("masonry");
 
+	var App = require("App");
+
+	var GiphyModel = require("models/giphy");
 	var MediaModel = require("models/media");
 
 	var searchTemplate = require("text!templates/search.html");
@@ -162,11 +165,36 @@ define(function(require, exports, module) {
 			var id = link.data("id");
 			var model = this.collection.get(id);
 
-			var modalContent = this.modalContent({
-				gif: model.toJSON()
-			});
+			if (!model) {
+				model = new GiphyModel({
+					id: id
+				});
+				model.fetch({
+					data: $.param({
+						api_key: App.Giphy.apiKey
+					})
+				});
+				model.once("sync", function(){
+					this.viewSingleOpenModal(
+						this.modalContent({
+							gif: model.toJSON()
+						})
+					);
+				}, this);
 
-			this.$el.find("#gif-modal-content").html(modalContent);
+			} else {
+
+				this.viewSingleOpenModal(
+					this.modalContent({
+						gif: model.toJSON()
+					})
+				);
+
+			}
+		},
+
+		viewSingleOpenModal: function(content) {
+			this.$el.find("#gif-modal-content").html(content);
 			this.$el.find("#gif-modal").modal("show");
 		},
 
