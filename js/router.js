@@ -36,6 +36,28 @@ define(function(require, exports, module) {
 			});
 
 			this.maybeRenderUserInfo();
+
+			// this.watchDogID = setInterval($.proxy(this, 'watchDog'), 60000);
+			this.watchDogID = setInterval($.proxy(this, 'watchDog'), 2000);
+		},
+
+		watchDog: function() {
+			var originalHandler = this.onErrorFetchUserInfo;
+			var self = this;
+			var errHandler = function(xhr, status, err) {
+				originalHandler.apply(self, arguments);
+			};
+
+			if (!this.isAuthorized()) {
+				return false;
+			}
+
+			if (this.userInfo && _.isFunction(this.userInfo.fetch)) {
+				this.userInfo.fetch({
+					beforeSend: App.WPCOM.setBearer,
+					error: errHandler
+				});
+			}
 		},
 
 		authorize: function() {
@@ -88,9 +110,24 @@ define(function(require, exports, module) {
 				);
 			}, this);
 
+			this.fetchUserInfo();
+		},
+
+		fetchUserInfo: function() {
 			this.userInfo.fetch({
-				beforeSend: App.WPCOM.setBearer
+				beforeSend: App.WPCOM.setBearer,
+				error: $.proxy(this, 'onErrorFetchUserInfo')
 			});
+		},
+
+		onErrorFetchUserInfo: function(xhr, status, err) {
+			var msg = "Error fetching user info";
+			if (status.responseJSON && status.responseJSON.message) {
+				msg = status.responseJSON.message;
+			}
+			alert(msg);
+
+			this.logout();
 		},
 
 		search: function(keyword, offset) {
