@@ -33,6 +33,7 @@
 		"grunt-processhtml": "~0.3.0",
 		"grunt-filerev": "~0.2.1",
 		"grunt-usemin": "~2.2.0",
-		"grunt-gh-pages": "~0.9.1"
+		"grunt-gh-pages": "~0.9.1",
+		"grunt-contrib-watch": "~0.5.3"
 	}
 }

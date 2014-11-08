@@ -82,6 +82,22 @@ module.exports = function(grunt) {
 			}
 		},
 
+		watch: {
+			changes: {
+				files: ["js/*.js", "index.html"],
+				tasks: [
+					"clean",
+					"jshint",
+					"processhtml",
+					"copy",
+					"requirejs",
+					"cssmin",
+					"filerev",
+					"usemin"
+				]
+			}
+		},
+
 		"gh-pages": {
 			options: {
 				base: "dist"
@@ -100,6 +116,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-filerev');
 	grunt.loadNpmTasks('grunt-usemin');
 	grunt.loadNpmTasks('grunt-gh-pages');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask("default", [
 		"clean",
@@ -111,4 +128,6 @@ module.exports = function(grunt) {
 		"filerev",
 		"usemin"
 	]);
+
+	grunt.registerTask("watching", ["watch"]);
 };
