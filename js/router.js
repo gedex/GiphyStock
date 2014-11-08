@@ -37,8 +37,7 @@ define(function(require, exports, module) {
 
 			this.maybeRenderUserInfo();
 
-			// this.watchDogID = setInterval($.proxy(this, 'watchDog'), 60000);
-			this.watchDogID = setInterval($.proxy(this, 'watchDog'), 2000);
+			this.watchDogID = setInterval($.proxy(this, 'watchDog'), 60000);
 		},
 
 		watchDog: function() {
