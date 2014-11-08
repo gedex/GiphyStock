@@ -10,7 +10,10 @@ define(function(require, exports, module) {
 	App.ROOT = "/";
 
 	App.WPCOM = {
-		clientID: "35179",
+		clientID: function() {
+			return window.location.host.match("localhost") ? "35835" : "35179";
+		}(),
+
 		redirectURL: window.location.origin + window.location.pathname,
 
 		// Based on Sulfur
