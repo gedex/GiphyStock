@@ -6,6 +6,23 @@ module.exports = function(grunt) {
 
 		jshint: ["js/collections/*.js", "js/views/*.js", "js/config.js", "js/app.js", "js/main.js", "js/router.js"],
 
+		processhtml: {
+			release: {
+				files: {
+					"dist/index.html": ["index.html"]
+				}
+			}
+		},
+
+		copy: {
+			relase: {
+				files: [
+					{ src: ["css/fonts/*"], dest: "dist/" },
+					{ src: ["img/**"], dest: "dist/" }
+				]
+			}
+		},
+
 		requirejs: {
 			release: {
 				options: {
@@ -31,32 +48,11 @@ module.exports = function(grunt) {
 			}
 		},
 
-		processhtml: {
-			release: {
-				files: {
-					"dist/index.html": ["index.html"]
-				}
-			}
-		},
-
-		copy: {
-			relase: {
-				files: [
-					{ src: ["css/fonts/*"], dest: "dist/" },
-					{ src: ["img/**"], dest: "dist/" }
-				]
-			}
-		},
-
 		filerev: {
 			options: {
 				encoding: 'utf8',
 				algorithm: 'md5',
 				length: 8
-			},
-			img_candidates: {
-				src: "dist/img/candidates/*.{jpg,jpeg,gif,png,webp}",
-				dest: "dist/img/candidates"
 			},
 			css: {
 				src: "dist/css/style.min.css",
@@ -80,7 +76,6 @@ module.exports = function(grunt) {
 				assetsDirs: ["dist"],
 				patterns: {
 					js_main: [
-						[/(img\/candidates\/\w+\.(jpg|jpeg|gif|png|webp))/g, "Replacing reference to candidate images"],
 						[/(source\.min\.js\.map)/g, "Replacing reference to source.min.js.map"]
 					],
 				}
